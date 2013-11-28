@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularjsPuestaEnProduccionContinuaApp', [])
+angular.module('angularjsPuestaEnProduccionContinuaApp', ['ngRoute'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
