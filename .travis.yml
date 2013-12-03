@@ -1,7 +1,21 @@
 language: node_js
 node_js:
-  - '0.8'
-  - '0.10'
+- '0.8'
+- '0.10'
 before_script:
-  - 'npm install -g bower grunt-cli'
-  - 'bower install'
+- npm install -g bower grunt-cli
+- bower install
+env:
+  global:
+  - GH_OWNER: JulianMayorga
+    GH_PROJECT_NAME: angularjs-puesta-en-produccion-continua
+    secure: GjQMJmGMAMgjRBJ/6t6oq1/gslaA1Po9yDtd2NQH/r4/c+ztOux2ELP470m4uKpY3sxmoK9iSDBqdcJNakM1devUB3Vpm7X6KdEZ0F003FnOiMxL3AcGcy0RMex1rlHzPS82dY9IHNdajCox3sRfI4o454ymZAw9Gtrgo68FxHk=
+  - secure: TZ9qH7t400Djl/wh0LYO7hArx8qH/MEEkxCdwHydwL6LzvqJtCp0TZ4w0qgujxg+nnxy2iwQN8mh3IF3dirto4J3irzBPQH3/rmVcRirsmp47dbvR59DUzk/XRWgJH6sBQCSE8/i5AogHipgtjR66KhLinWleO0Oy6EookB43Ss=
+script:
+- npm test
+after_success:
+- git config user.email "mayorga.julian@gmail.com"
+- git config user.name "ElJuli"
+- grunt build
+- grunt gh-pages-clean
+- grunt gh-pages
